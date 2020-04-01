@@ -1,14 +1,11 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').load();
-}
+var connectionString = 'DefaultEndpointsProtocol=https;AccountName=iiitkotabucket1;AccountKey=4HcGY3lD2u3rfFw+jEz/aYLt6zaZ5ZHHNva3TNgckZO09LwCdbB9FEVlyckhbXPNUZJK+4MSvP/RB/Kf2/BALg==;EndpointSuffix=core.windows.net'
 
 const
       express = require('express')
     , router = express.Router()
     , azureStorage = require('azure-storage')
-    , blobService = azureStorage.createBlobService()
+    , blobService = azureStorage.createBlobService(connectionString)
     , containerName = 'resources'
-    , config = require('../config')
 ;
 
 router.get('/', (req, res, next) => {
@@ -33,7 +30,7 @@ router.get('/', (req, res, next) => {
       viewData = {
         title: 'Home',
         viewName: 'index',
-        accountName: config.getStorageAccountName(),
+        accountName: 'iiitkotabucket1',
         containerName: containerName
       };
 
