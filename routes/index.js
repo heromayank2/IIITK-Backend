@@ -5,7 +5,7 @@ const
     , router = express.Router()
     , azureStorage = require('azure-storage')
     , blobService = azureStorage.createBlobService(connectionString)
-    , containerName = 'resources'
+    , containerName = 'resources1'
 ;
 
 router.get('/', (req, res, next) => {
@@ -35,7 +35,7 @@ router.get('/', (req, res, next) => {
       };
 
       if (data.entries.length) {
-        viewData.resources = data.entries;
+        viewData.resources1 = data.entries;
       }
       
     }

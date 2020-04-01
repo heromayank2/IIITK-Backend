@@ -12,7 +12,7 @@ const
     , blobService = azureStorage.createBlobService(connectionString)
 
     , getStream = require('into-stream')
-    , containerName = 'resources'
+    , containerName = 'resources1'
 ;
 // const containerClient = await blobServiceClient.getContainerClient(containerName);
 

@@ -9,9 +9,9 @@
 
 <p id="message">{{message}}</p>
 
-<h2>Generated resources</h2>
-{{#each this.resources}}
-  <img src="https://{{../accountName}}.blob.core.windows.net/{{../containerName}}/{{name}}">
+<h2>Links Generated</h2>
+{{#each this.resources1}}
+  <p><i>Link: </i>https://{{../accountName}}.blob.core.windows.net/{{../containerName}}/{{name}}</p>
 {{/each}}
 
 <hr>
