@@ -13,6 +13,10 @@ router.get('/', (req, res, next) => {
   blobService.listBlobsSegmented(containerName, null, (err, data) => {
 
     let viewData;
+    var ip = (req.headers['x-forwarded-for'] || '').split(',').pop() || 
+         req.connection.remoteAddress || 
+         req.socket.remoteAddress || 
+         req.connection.socket.remoteAddress
 
     if (err) {
 
@@ -28,10 +32,11 @@ router.get('/', (req, res, next) => {
     } else {
 
       viewData = {
-        title: 'Home',
+        title: 'Dashboard',
         viewName: 'index',
         accountName: 'iiitkotabucket1',
-        containerName: containerName
+        containerName: containerName,
+        ip:ip
       };
 
       if (data.entries.length) {
