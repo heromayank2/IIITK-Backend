@@ -1,19 +1,133 @@
-<div style="padding:50px;background-color:darkkhaki">
+<div style="padding:50px;background-color:rgb(79, 197, 79)">
     <h2>Add New Faculty</h2>
-    <p>Remember every detail should be added, if present. </p>
-    <form action="" method="POST">
-        <div class="form-group">
-            <label for="username" style="font-size: larger;">Username</label>
-            <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp"
-                style="width:30%">
+    <p>Remember every detail should be added, if present. <br/> Go back to <a href="/dashboard?token={{this.token}}">Dashboard</a></p>
+    <form action="/add/faculty?token={{this.token}}" method="POST">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" aria-describedby="name"
+                        style="width:70%">
+                </div>
+                <div class="form-group">
+                    <label for="mail">Email</label>
+                    <input type="email" class="form-control" id="mail" name="mail" style="width:70%">
+                </div>
+                <div class="form-group">
+                    <label for="role">Role: </label>
+                    <select class="form-control" id="role" name="role" style="width:70%">
+                        <option>Guest</option>
+                        <option>Adjunct</option>
+                        <option>Visiting</option>
+                        <option>Permanent</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department: </label>
+                    <select class="form-control" id="department" name="department" style="width:70%">
+                        <option>Computer Science and Engineering</option>
+                        <option>Electronics and Communication Engineering</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="photourl">Paste Faculty's Image url here</label>
+                    <input type="text" class="form-control" id="photourl" name="photourl" style="width:70%">
+                </div>
+                <div class="form-group">
+                    <label for="phonenumber">Phone Number</label>
+                    <input type="number" class="form-control" id="phonenumber" name="phonenumber" style="width:70%"
+                        placeholder="xxxxx-xxxxx">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="5" style="width:70%"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="gspl">Google Scholar's profile link</label>
+                    <input type="text" class="form-control" id="gspl" name="gspl" style="width:70%">
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                
+                <div class="form-group">
+                    <label for="socialmedia">Social Media Handles</label>
+                    <input type="text" class="form-control mb-1" name="linkedin" style="width:70%;"
+                        placeholder="Linkedin">
+                    <input type="text" class="form-control mb-1" name="facebook" style="width:70%"
+                        placeholder="Facebook">
+                    <input type="text" class="form-control mb-1" name="twitter" style="width:70%" placeholder="Twitter">
+                </div>
+                <div class="form-group">
+                    <label for="research_interests">Research Interests</label>
+                    <div class="row">
+                        <div class="col-sm-8 col-lg-4">
+                            <input type="text" class="form-control mb-1" name="rs0" style="width:100%;"
+                                placeholder="#1">
+                            <input type="text" class="form-control mb-1" name="rs1" style="width:100%"
+                                placeholder="#2">
+                            <input type="text" class="form-control mb-1" name="rs2" style="width:100%"
+                                placeholder="#3">
+                            <input type="text" class="form-control mb-1" name="rs3" style="width:100%"
+                                placeholder="#4">
+                            <input type="text" class="form-control mb-1" name="rs4" style="width:100%"
+                                placeholder="#5">
+                        </div>
+                        <div class="col-sm-8 col-lg-4">
+                            <input type="text" class="form-control mb-1" name="rs5" style="width:100%;"
+                                placeholder="#6">
+                            <input type="text" class="form-control mb-1" name="rs6" style="width:100%"
+                                placeholder="#7">
+                            <input type="text" class="form-control mb-1" name="rs7" style="width:100%"
+                                placeholder="#8">
+                            <input type="text" class="form-control mb-1" name="rs8" style="width:100%"
+                                placeholder="#9">
+                            <input type="text" class="form-control mb-1" name="rs9" style="width:100%"
+                                placeholder="#10">
+                        </div>
+                        
+                    </div>
+                    
+
+                </div>
+                <div class="form-group">
+                    <label for="publications">Publications</label>
+                    <div class="row">
+                        <div class="col-sm-8 col-lg-4">
+                            <input type="text" class="form-control mb-1" name="p0" style="width:100%;"
+                                placeholder="#1">
+                            <input type="text" class="form-control mb-1" name="p1" style="width:100%;"
+                                placeholder="#2">
+                            <input type="text" class="form-control mb-1" name="p2" style="width:100%;"
+                                placeholder="#3">
+                            <input type="text" class="form-control mb-1" name="p3" style="width:100%;"
+                                placeholder="#4">
+                            <input type="text" class="form-control mb-1" name="p4" style="width:100%"
+                                placeholder="#5">
+                        </div>
+                        <div class="col-sm-8 col-lg-4">
+                            <input type="text" class="form-control mb-1" name="p5" style="width:100%;"
+                                placeholder="#6">
+                            <input type="text" class="form-control mb-1" name="p6" style="width:100%"
+                                placeholder="#7">
+                            <input type="text" class="form-control mb-1" name="p7" style="width:100%"
+                                placeholder="#8">
+                            <input type="text" class="form-control mb-1" name="p8" style="width:100%"
+                                placeholder="#9">
+                            <input type="text" class="form-control mb-1" name="p9" style="width:100%"
+                                placeholder="#10">
+                        </div>
+                        
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg">Add</button>
+            </div>
+
         </div>
-        <div class="form-group">
-            <label for="password" style="font-size: larger;">Password</label>
-            <input type="password" class="form-control" id="password" name="password" style="width:30%">
-        </div>
-        <button type="submit" class="btn btn-warning">Login</button>
+
+
         <br /><br />
-        <p>Our every API is secured and protected, all we can say is your dashboard is in good fingers.😁<br />
+        <p style="font-size: large;">Our every API is secured and protected, all we can say is your dashboard is in good fingers.😁<br />
             If you find any bug/error please report <a href="mailto:heromayank2@gmail.com">here.</a></p>
     </form>
 </div>

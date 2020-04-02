@@ -5,7 +5,7 @@
 <h3>Generate cloud link:</h3>
 <p>If your action requires images first generate their urls here.</p>
 <div class="row">
-  <div class="col-sm-6 col-lg-3 crd">
+  <div class="col-sm-4 col-lg-3 crd">
     Generate cloud stored link
     <form id="upload-form" action="/upload?token={{this.token}}" method="POST" enctype="multipart/form-data">
       <h3>Select an image to upload:</h3>
@@ -13,10 +13,10 @@
       <div><input class="btn btn-warning" type="submit" value="Upload Image"></div>
     </form>
   </div>
-  <div class="col-lg-2">
-  </div>
+  {{!-- <div class="col-lg-2">
+  </div> --}}
   <div class="col-sm-6 col-lg-6">
-    <div style="height:220px;width:100%;border:1px solid #F4A460;font:16px/26px Georgia, Garamond, Serif;overflow:auto;padding:20px;">
+    <div style="height:240px;width:100%;border:1px solid #F4A460;font:16px/26px Georgia, Garamond, Serif;overflow:auto;padding:20px;">
     <p>Links generated so far</p>
     <ol>
       {{#each this.resources1}}
@@ -33,12 +33,15 @@
   <div class="col-sm-6 col-lg-3 crd">
     <h4>Add New Faculty👨‍🏫</h4>
     <h3>Click the button to proceed</h3>
-    <button id="addfaculty" class="btn btn-lg btn-warning">Add</button>
+    <p>This feature is only for admins, not coadmins</p>
+    <a href="/add/faculty?token={{this.token}}" style="text-decoration: none;"><button id="addfaculty" class="btn btn-lg btn-warning">Add</button></a>
   </div>
   <div class="col-sm-6  col-lg-3 crd">
     <h4>Remove Faculty👩‍🏫</h4>
     <h3>Click the button to proceed</h3>
-    <button id="addfaculty" class="btn btn-lg btn-warning">Remove</button>
+    <p>This feature is only for admins, not coadmins</p>
+    <a href="/remove/faculty?token={{this.token}}" style="text-decoration: none;"><button id="removefaculty" class="btn btn-lg btn-warning">Remove</button></a>
+ 
   </div>
 </div>
 <br /><br />

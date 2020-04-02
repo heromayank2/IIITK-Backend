@@ -5,12 +5,15 @@ var facultySchema = new mongoose.Schema({
     role:String,
     department:String,
     phonenumber:String,
+    gspl:String,
     mail:String,
+    twitter:String,
+    facebook:String,
+    linkedin:String,
     photourl:String,
     description:String,
     research_intersts:Array,
-    selected_pubs:Array,
-    ongoing_projects:Array
+    publications:Array
 });
 
 module.exports = mongoose.model("Faculty", facultySchema);

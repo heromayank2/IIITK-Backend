@@ -10,6 +10,9 @@ const mongoose = require("mongoose");
 const index = require('./routes/index');
 const upload = require('./routes/upload');
 const admin = require('./routes/admin')
+const add = require('./routes/add')
+const remove = require('./routes/remove')
+const get = require('./routes/get')
 
 var cors = require("cors");
 
@@ -55,8 +58,10 @@ require("./config/passport");
 
 app.use('/', index);
 app.use('/upload', upload);
-app.use('/admin',admin)
-
+app.use('/admin',admin);
+app.use('/add',add);
+app.use('/remove',remove)
+app.use('/get',get)
 
 
 

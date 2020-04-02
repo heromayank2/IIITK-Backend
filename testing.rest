@@ -1,4 +1,4 @@
-POST https://localhost:3000/admin/
+POST http://localhost:3000/admin/
 content-type: application/json
 
 {

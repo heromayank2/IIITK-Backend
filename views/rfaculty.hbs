@@ -1,0 +1,27 @@
+<div style="padding:50px;background-color:peachpuff">
+    <h2>Remove Faculty</h2>
+    <p>Once deleted you cannot retrieve it back <br/> Go back to <a href="/dashboard?token={{this.token}}">Dashboard</a></p>
+    {{!-- <form action="/remove/faculty?token={{this.token}}" method="POST">
+      <div>
+        <label for="facultyselect">Select the faculty</label>
+        <select id="facultyselect" name="_id"> --}}
+            <div class="row">
+
+           
+            {{#each this.faculties}}
+                    <div class="col-lg-2 crd mr-3" >
+                        <center>
+                            <img src="{{photourl}}" style="height: 200px;width:200px" class="mb-1">
+                            <p><i>Name:</i> {{name}}<br/><i>Role:</i> {{role}} Faculty<br/><i>Department:</i> {{department}}</p>
+                        </center>
+                    </div>
+             {{/each}}
+              </div>
+        {{!-- </select>
+    </div> --}}
+
+        <br /><br />
+        <p style="font-size: large;">Our every API is secured and protected, all we can say is your dashboard is in good fingers.😁<br />
+            If you find any bug/error please report <a href="mailto:heromayank2@gmail.com">here.</a></p>
+    {{!-- </form> --}}
+</div>
