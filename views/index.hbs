@@ -1,22 +1,24 @@
-<h1>Image Resizer</h1>
+<h1>Dashboard: Admin Panel IIITKOTA</h1>
 
-<h2>Upload photos</h2>
-<form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
-  <h2>Select an image to upload:</h2>
-  <div class="upload-container"><input id="file-picker" type="file" name="image"></div>
-  <div><input type="submit" value="Upload Image"></div>
-</form>
+<div className="row">
+  <div className="col-lg-3 crd">
+    Generate cloud stored link
+    <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+      <h2>Select an image to upload:</h2>
+      <div class="upload-container"><input id="file-picker" type="file" name="image"></div>
+      <div><input type="submit" value="Upload Image"></div>
+    </form>
+  </div>
+</div>
 
-<p id="message">{{message}}</p>
+{{!-- <p id="message">{{message}}</p> --}}
 
-<h2>Links Generated</h2>
+{{!-- <h2>Links Generated</h2>
 {{#each this.resources1}}
   <p><i>Link: </i>https://{{../accountName}}.blob.core.windows.net/{{../containerName}}/{{name}}</p>
-{{/each}}
+{{/each}} --}}
 
 <hr>
-<p>This app has no official privacy policy. Your data will be uploaded to a service in order to produce a thumbnail. Your images will be public once you upload them and there is no automated way to remove them.</p>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
 
@@ -27,7 +29,7 @@
 
       message.innerText = '';
 
-      if(!picker.files.length) {
+      if (!picker.files.length) {
         message.innerText = 'Please select an image to upload.';
         e.preventDefault();
         return false;
