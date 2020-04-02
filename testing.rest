@@ -1,0 +1,20 @@
+POST https://localhost:3000/admin/
+content-type: application/json
+
+{
+    "admin":{
+        "username":"sample",
+        "password":"sample",
+        "role":"coadmin"
+    }
+}
+###
+POST http://localhost:3000/admin/login/
+Content-Type: application/json
+
+{
+    "admin":{
+        "username":"sample",
+        "password":"sample"
+    }
+}

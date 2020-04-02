@@ -1,4 +1,5 @@
 var connectionString = 'DefaultEndpointsProtocol=https;AccountName=iiitkotabucket1;AccountKey=4HcGY3lD2u3rfFw+jEz/aYLt6zaZ5ZHHNva3TNgckZO09LwCdbB9FEVlyckhbXPNUZJK+4MSvP/RB/Kf2/BALg==;EndpointSuffix=core.windows.net'
+var auth = require("./auth");
 
 const
       express = require('express')
@@ -8,7 +9,20 @@ const
     , containerName = 'resources1'
 ;
 
-router.get('/', (req, res, next) => {
+router.get('/',(req,res)=>{
+  // if() check for auth done or not
+  if(1==1){
+    viewData = {
+      title: 'Login',
+      viewName: 'login'
+    };
+    return res.render(viewData.title,viewData);
+  }else{
+    res.redirect('/dashboard')
+  }
+});
+
+router.get('/dashboard',auth.required, (req, res, next) => {
 
   blobService.listBlobsSegmented(containerName, null, (err, data) => {
 
