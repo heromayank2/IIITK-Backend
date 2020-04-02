@@ -13,7 +13,7 @@ router.get('/',(req,res)=>{
   // if() check for auth done or not
   if(1==1){
     viewData = {
-      title: 'Login',
+      title: 'login',
       viewName: 'login'
     };
     return res.render(viewData.title,viewData);
