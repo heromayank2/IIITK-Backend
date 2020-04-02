@@ -62,6 +62,7 @@ router.post("/login", auth.optional, (req, res) => {
         admin.token = dbAdmin.generateJWT();
         console.log(admin.token)
         var token = admin.token
+        // Cookies.set('token',token);
         return res.redirect('/dashboard?token='+token)
       }
     } else {

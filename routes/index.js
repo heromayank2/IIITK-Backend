@@ -31,6 +31,7 @@ router.get('/dashboard',auth.required, (req, res, next) => {
          req.connection.remoteAddress || 
          req.socket.remoteAddress || 
          req.connection.socket.remoteAddress
+    var token = req.query.token;
 
     if (err) {
 
@@ -50,7 +51,8 @@ router.get('/dashboard',auth.required, (req, res, next) => {
         viewName: 'index',
         accountName: 'iiitkotabucket1',
         containerName: containerName,
-        ip:ip
+        ip:ip,
+        token:token
       };
 
       if (data.entries.length) {

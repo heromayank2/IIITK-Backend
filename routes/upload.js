@@ -42,10 +42,8 @@ router.post('/', uploadStrategy, (req, res) => {
             console.log(err)
             return;
         }
-
-        res.render('success', { 
-            message: 'File uploaded to Azure Blob storage.' 
-        });
+        let token = req.query.token;
+        res.redirect('/dashboard?token='+token)
     });
 });
 
