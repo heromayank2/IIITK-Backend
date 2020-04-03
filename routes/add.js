@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 const Faculty = require("../models/Faculty");
+const Notice = require("../models/Notice")
+const News = require('../models/News')
+const Article = require('../models/Article')
 const passport = require("passport");
 var auth = require("./auth");
 
@@ -31,9 +34,78 @@ router.post('/faculty',(req,res)=>{
     var token = req.query.token
     return newfaculty
     .save()
-    .then(() => res.redirect('/dashboard?token='+token+'&?message=New faculty '+name+' is added'));
+    .then(() => res.redirect('/dashboard?token='+token+'&?created=Faculty'));
 
 })
 
+router.post('/notice',(req,res)=>{
+
+    var ip = (req.headers['x-forwarded-for'] || '').split(',').pop() || 
+    req.connection.remoteAddress || 
+    req.socket.remoteAddress || 
+    req.connection.socket.remoteAddress
+
+    const {
+        body:{
+            title,description,validity
+        }
+    } = req
+    var notice ={
+        title,description,validity,ip
+    }
+    const newNotice = new Notice(notice);
+    var token = req.query.token
+    return newNotice
+    .save()
+    .then(() => res.redirect('/dashboard?token='+token+'&?created=Notice'));
+})
+
+router.post('/news',(req,res)=>{
+
+    var ip = (req.headers['x-forwarded-for'] || '').split(',').pop() || 
+    req.connection.remoteAddress || 
+    req.socket.remoteAddress || 
+    req.connection.socket.remoteAddress
+
+    const {
+        body:{
+            title,description,photourl
+        }
+    } = req
+    var news ={
+        title,description,photourl,ip
+    }
+    const newNews = new News(news);
+    var token = req.query.token
+    return newNews
+    .save()
+    .then(() => res.redirect('/dashboard?token='+token+'&?created=News'));
+})
+
+router.get('/article',(req,res)=>{
+    let token = req.query.token;
+    let viewData = {
+        title: 'Article',
+        viewName: 'article',
+        token:token
+      };
+    res.render(viewData.viewName,viewData)
+})
+
+router.post('/article',(req,res)=>{
+    let token = req.query.token;
+    const {
+        body:{
+            title,imageurl1,imageurl2,paragraph1,paragraph2,paragraph3,paragraph4,author
+        }
+    } = req;
+    var article ={
+        title,imageurl1,imageurl2,paragraph1,paragraph2,paragraph3,paragraph4,author
+    }
+    var newArticle = new Article(article)
+    return newArticle
+    .save()
+    .then(() => res.redirect('/dashboard?token='+token+'&?created=Article'));
+})
 
 module.exports = router;

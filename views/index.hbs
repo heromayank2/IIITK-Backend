@@ -16,13 +16,15 @@
   {{!-- <div class="col-lg-2">
   </div> --}}
   <div class="col-sm-6 col-lg-6">
-    <div style="height:240px;width:100%;border:1px solid #F4A460;font:16px/26px Georgia, Garamond, Serif;overflow:auto;padding:20px;">
-    <p>Links generated so far</p>
-    <ol>
-      {{#each this.resources1}}
-          <li>https://{{../accountName}}.blob.core.windows.net/{{../containerName}}/{{name}}</li>
-      {{/each}}
-    </ol>
+    <div
+      style="height:240px;width:100%;border:1px solid #F4A460;overflow:auto;">
+
+      <ol class="list-group">
+        <li class="list-group-item list-group-item-warning">Links generated so far....</li>
+        {{#each this.resources1}}
+        <li class="list-group-item">https://{{../accountName}}.blob.core.windows.net/{{../containerName}}/{{name}}</li>
+        {{/each}}
+      </ol>
     </div>
   </div>
 </div>
@@ -34,14 +36,16 @@
     <h4>Add New Faculty👨‍🏫</h4>
     <h3>Click the button to proceed</h3>
     <p>This feature is only for admins, not coadmins</p>
-    <a href="/add/faculty?token={{this.token}}" style="text-decoration: none;"><button id="addfaculty" class="btn btn-lg btn-warning">Add</button></a>
+    <a href="/add/faculty?token={{this.token}}" style="text-decoration: none;"><button id="addfaculty"
+        class="btn btn-lg btn-warning">Add</button></a>
   </div>
   <div class="col-sm-6  col-lg-3 crd">
     <h4>Remove Faculty👩‍🏫</h4>
     <h3>Click the button to proceed</h3>
     <p>This feature is only for admins, not coadmins</p>
-    <a href="/remove/faculty?token={{this.token}}" style="text-decoration: none;"><button id="removefaculty" class="btn btn-lg btn-warning">Remove</button></a>
- 
+    <a href="/remove/faculty?token={{this.token}}" style="text-decoration: none;"><button id="removefaculty"
+        class="btn btn-lg btn-warning">Remove</button></a>
+
   </div>
 </div>
 <br /><br />
@@ -50,19 +54,84 @@
 <div class="row">
   <div class="col-sm-4 col-lg-3 crd">
     <h3>Add New Notice📑</h3>
-    <p>Rememeber once added you <strong>cannot</strong> delete it.</p>
-    <button id="addnotice" class="btn btn-lg btn-warning">Add</button>
+    <p>Rememeber once you have created one, you <strong>cannot</strong> delete it.</p>
+    <button type="button" class="btn btn-lg btn-warning" data-toggle="modal" data-target="#staticBackdrop">Add</button>
   </div>
   <div class="col-sm-4 col-lg-3 crd">
-    <h3>Add News 📰</h3>
+    <h4>Add News 📰</h4>
     <p>Rememeber once added you <strong>cannot</strong> delete it.</p>
-    <button id="addnews" class="btn btn-lg btn-warning">Add</button>
+    <h5>News is an simplified combination of notice and article</h5>
+    <button id="addnews" class="btn btn-lg btn-warning"data-toggle="modal" data-target="#staticBackdrop2">Add</button>
   </div>
   <div class="col-sm-4 col-lg-3 crd">
-    <h3>Add New Article 📕</h3>
+    <h4>Add New Article 📕</h4>
     <p>Rememeber once added you <strong>cannot</strong> delete it.</p>
-    <button id="addarticle" class="btn btn-lg btn-warning">Add</button>
+    <h5>More powerful comming soon!</h5>
+    <a href="/add/article?token={{this.token}}"><button id="addarticle" class="btn btn-lg btn-warning">Add</button>
+  </a></div>
+</div>
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Create New Notice</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Note: Once created you cannot delete it. <br />Also, your ip will be recorded for security purposes.</p>
+        <form action="/add/notice?token={{this.token}}" method="post">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" aria-describedby="title" name="title">
+          </div>
+          <div class="form-group">
+            <label for="description">Brief Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="validity">Expiration Date</label>
+            <input type="date" class="form-control" id="validity" min="2020-03-31" name="validity">
+          </div>
+          <button type="submit" class="btn btn-warning btn-sm">Submit</button>
+        </form>
+      </div>
+    </div>
   </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="staticBackdrop2" data-backdrop="static" tabindex="-1" role="dialog"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Add News</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Note: Once created you cannot delete it. <br />Also, your ip will be recorded for security purposes.</p>
+        <form action="/add/news?token={{this.token}}" method="post">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" aria-describedby="title" name="title">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="7"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="photourl">Head Image URL</label>
+            <input type="text" class="form-control" id="photourl"name="photourl">
+          </div>
+          <button type="submit" class="btn btn-warning btn-sm">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 <br /><br />
 <h3>Create News event here</h3>
@@ -82,7 +151,8 @@
 
 </div>
 
-{{!-- Model : Add Faculty --}}
+{{!-- Model : Add Notice --}}
+
 
 <hr>
 <script>
@@ -103,4 +173,5 @@
     });
 
   });
+
 </script>
