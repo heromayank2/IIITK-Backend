@@ -5,7 +5,7 @@ const Faculty = require("../models/Faculty");
 const passport = require("passport");
 var auth = require("./auth");
 
-router.get('/faculty',(req,res)=>{
+router.get('/faculty',auth.required,(req,res)=>{
     let token = req.query.token;
     Faculty.find({}).then((faculties)=>{
         let viewData = {
@@ -18,7 +18,7 @@ router.get('/faculty',(req,res)=>{
     })
 })
 
-router.post('/faculty',(req,res)=>{
+router.post('/faculty',auth.required,(req,res)=>{
     let token = req.query.token;
     const {
         body:{

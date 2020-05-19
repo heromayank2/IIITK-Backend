@@ -8,7 +8,7 @@ const Article = require('../models/Article')
 const passport = require("passport");
 var auth = require("./auth");
 
-router.get('/faculty',(req,res)=>{
+router.get('/faculty',auth.required,(req,res)=>{
     let token = req.query.token;
     let viewData = {
         title: 'Faculty',
@@ -18,7 +18,7 @@ router.get('/faculty',(req,res)=>{
     res.render(viewData.viewName,viewData)
 })
 
-router.post('/faculty',(req,res)=>{
+router.post('/faculty',auth.required,(req,res)=>{
     const {
         body:{
             name,role,department,phonenumber,mail,photourl,description,gspl,twitter,facebook,linkedin,rs1,rs2,rs3,rs4,rs5,rs6,rs7,rs8,rs9,rs0,p0,p1,p2,p3,p4,p5,p6,p7,p8,p9
@@ -38,7 +38,7 @@ router.post('/faculty',(req,res)=>{
 
 })
 
-router.post('/notice',(req,res)=>{
+router.post('/notice',auth.required,(req,res)=>{
 
     var ip = (req.headers['x-forwarded-for'] || '').split(',').pop() || 
     req.connection.remoteAddress || 
@@ -60,7 +60,7 @@ router.post('/notice',(req,res)=>{
     .then(() => res.redirect('/dashboard?token='+token+'&?created=Notice'));
 })
 
-router.post('/news',(req,res)=>{
+router.post('/news',auth.required,(req,res)=>{
 
     var ip = (req.headers['x-forwarded-for'] || '').split(',').pop() || 
     req.connection.remoteAddress || 

@@ -1,1 +1,1 @@
-A nodejs application to generate cloud stored links for your resources.
+Backend For IIITK Site.
